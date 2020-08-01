@@ -3,3 +3,5 @@ en:
     created: Book was successfully created.
     updated: Book was successfully updated.
     destroyed: Book was successfully destroyed.
+  form:
+    file: Select file

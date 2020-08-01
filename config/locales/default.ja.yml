@@ -3,3 +3,5 @@ ja:
     created: 新しい本を登録しました。
     updated: 本を更新しました。
     destroyed: 本を削除しました。
+  form:
+    file: 選択してください
