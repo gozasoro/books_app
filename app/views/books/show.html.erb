@@ -1,24 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong><%= Book.human_attribute_name(:title) %>:</strong>
-  <%= @book.title %>
-</p>
+<table class="uk-table uk-table-striped">
+  <tbody>
+    <tr>
+      <td><%= Book.human_attribute_name(:title) %></td>
+      <td><%= @book.title %></td>
+    </tr>
+    <tr>
+      <td><%= Book.human_attribute_name(:memo) %></td>
+      <td><%= @book.memo %></td>
+    </tr>
+    <tr>
+      <td><%= Book.human_attribute_name(:author) %></td>
+      <td><%= @book.author %></td>
+    </tr>
+    <tr>
+      <td><%= Book.human_attribute_name(:picture) %></td>
+      <td><%= image_tag(@book.picture_url) if @book.picture.present? %></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong><%= Book.human_attribute_name(:memo) %>:</strong>
-  <%= @book.memo %>
-</p>
-
-<p>
-  <strong><%= Book.human_attribute_name(:author) %>:</strong>
-  <%= @book.author %>
-</p>
-
-<p>
-  <strong><%= Book.human_attribute_name(:picture) %>:</strong>
-  <%= image_tag(@book.picture_url) if @book.picture.present? %>
-</p>
-
-<%= link_to t('.edit'), edit_book_path(@book) %> |
-<%= link_to t('.back'), books_path %>
+<%= link_to t('.edit'), edit_book_path(@book), class: 'uk-button uk-button-default uk-margin-right' %>
+<%= link_to t('.back'), books_path, class: 'uk-button uk-button-default' %>

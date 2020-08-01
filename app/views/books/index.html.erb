@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= t('.title') %></h1>
+<h1 class="uk-heading-bullet uk-margin-remove"><%= t('.title') %></h1>
 
-<table>
+<table class="uk-table uk-table-striped">
   <thead>
     <tr>
       <th><%= Book.human_attribute_name(:title) %></th>
@@ -28,6 +28,8 @@
   </tbody>
 </table>
 
+<%= paginate @books %>
+
 <br>
 
-<%= link_to t('.new'), new_book_path %>
+<%= link_to t('.new'), new_book_path, class: "uk-button uk-button-primary" %>

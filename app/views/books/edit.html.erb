@@ -1,6 +1,6 @@
-<h1><%= t('.title') %></h1>
+<h1 class="uk-heading-bullet"><%= t('.title') %></h1>
 
 <%= render 'form', book: @book %>
 
-<%= link_to t('.show'), @book %> |
-<%= link_to t('.back'), books_path %>
+<%= link_to t('.show'), @book, class: 'uk-button uk-button-default uk-margin-right' %>
+<%= link_to t('.back'), books_path, class: 'uk-button uk-button-default' %>
