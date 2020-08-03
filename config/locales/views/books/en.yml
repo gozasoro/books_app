@@ -1,0 +1,21 @@
+en:
+  books:
+    index:
+      title: Title
+      show: Show
+      edit: Edit
+      destroy: Destroy
+      confirm: Are you sure?
+      new: New Book
+    show:
+      edit: Edit
+      back: Back
+    new:
+      title: New Book
+      back: Back
+    edit:
+      title: Editing Book
+      show: Show
+      back: Back
+    form:
+      error: prohibited this book from being saved
