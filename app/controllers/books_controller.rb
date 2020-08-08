@@ -4,9 +4,11 @@ class BooksController < ApplicationController
   before_action :set_locale
   before_action :set_book, only: %i[show edit update destroy]
 
+  PER = 20
+
   # GET /books
   def index
-    @books = Book.all
+    @books = Book.page(params[:page]).per(PER)
   end
 
   # GET /books/1

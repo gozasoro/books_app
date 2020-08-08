@@ -11,27 +11,28 @@
   </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="field uk-margin">
+    <%= form.label :title, class: 'uk-form-label' %>
+    <%= form.text_field :title, class: 'uk-input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :memo %>
-    <%= form.text_area :memo %>
+  <div class="field uk-margin">
+    <%= form.label :memo, class: 'uk-form-label' %>
+    <%= form.text_area :memo, class: 'uk-input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author %>
+  <div class="field uk-margin">
+    <%= form.label :author, class: 'uk-form-label' %>
+    <%= form.text_field :author, class: 'uk-input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :picture %>
+  <div class="field uk-margin" uk-form-custom="target: true">
+    <%= form.label :picture, class: 'uk-form-label' %>
     <%= form.file_field :picture %>
+    <input class="uk-input uk-form-width-medium" type="text" placeholder=<%= t('form.file') %> disabled>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'uk-button uk-button-primary' %>
   </div>
 <% end %>
