@@ -11,6 +11,36 @@
   </head>
 
   <body>
+    <% if flash[:notice] %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+    <header>
+      <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-left">
+          <% if user_signed_in? %>
+            <ul class="uk-navbar-nav">
+              <li><%= current_user.name %>でログイン中</li>
+            </ul>
+          <% end %>
+        </div>
+        <div class="uk-navbar-right">
+          <% if user_signed_in? %>
+            <ul class="uk-navbar-nav">
+              <li><%= link_to t('devise.shared.links.profile'), current_user %></li>
+              <li><%= link_to t('devise.shared.links.sign_out'), destroy_user_session_path, method: :delete %></li>
+            </ul>
+          <% else %>
+            <ul class="uk-navbar-nav">
+              <li><%= link_to t('devise.shared.links.sign_in'), new_user_session_path %></li>
+              <li><%= link_to t('devise.shared.links.sign_up'), new_user_registration_path %></li>
+            </ul>
+          <% end %>
+        </div>
+      </nav>
+    </header>
     <div class="uk-section">
       <div class="uk-container-xsmall uk-margin-auto">
         <%= yield %>

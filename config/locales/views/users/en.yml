@@ -1,0 +1,7 @@
+ja:
+  users:
+    index:
+      title: Users
+    show:
+      edit: Edit
+      back: Back

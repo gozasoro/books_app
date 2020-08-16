@@ -1,0 +1,7 @@
+ja:
+  users:
+    index:
+      title: ユーザー一覧
+    show:
+      edit: 編集
+      back: 戻る

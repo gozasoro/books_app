@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
-  before_action :set_locale
   before_action :set_book, only: %i[show edit update destroy]
-
-  PER = 20
+  before_action :authenticate_user!, except: %i[index show]
 
   # GET /books
   def index
-    @books = Book.page(params[:page]).per(PER)
+    @books = Book.page(params[:page])
   end
 
   # GET /books/1
@@ -49,18 +47,6 @@ class BooksController < ApplicationController
   end
 
   private
-    def set_locale
-      I18n.locale = locale_in_params || I18n.default_locale
-    end
-
-    def locale_in_params
-      if params[:locale].present?
-        params[:locale].to_sym.presence_in(I18n.available_locales)
-      else
-        nil
-      end
-    end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
@@ -69,9 +55,5 @@ class BooksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def book_params
       params.require(:book).permit(:title, :memo, :author, :picture)
-    end
-
-    def default_url_options
-      { locale: I18n.locale }
     end
 end
