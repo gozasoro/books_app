@@ -1,0 +1,30 @@
+<table class="uk-table uk-table-striped">
+  <tbody>
+    <tr>
+      <td><%= User.human_attribute_name(:name) %></td>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td><%= User.human_attribute_name(:introduction) %></td>
+      <td><%= @user.introduction %></td>
+    </tr>
+    <% if current_user == @user %>
+      <tr>
+        <td><%= User.human_attribute_name(:email) %></td>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <td><%= User.human_attribute_name(:postal_code) %></td>
+        <td><%= @user.postal_code %></td>
+      </tr>
+      <tr>
+        <td><%= User.human_attribute_name(:address) %></td>
+        <td><%= @user.address %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if current_user == @user %>
+  <%= link_to t('.edit'), edit_user_registration_path, class: 'uk-button uk-button-default uk-margin-right' %>
+<% end %>
+<%= link_to t('.back'), users_path, class: 'uk-button uk-button-default' %>
