@@ -11,5 +11,6 @@ ja:
   devise:
     shared:
       links:
+        sign_in_with_github: GitHubでログイン
         sign_out: ログアウト
         profile: マイページ
