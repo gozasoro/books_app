@@ -12,10 +12,16 @@
 
   <body>
     <% if flash[:notice] %>
-      <p class="notice"><%= notice %></p>
+      <div class="uk-alert-success uk-margin-remove" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <p><%= notice %></p>
+      </div>
     <% end %>
     <% if flash[:alert] %>
-      <p class="alert"><%= alert %></p>
+      <div class="uk-alert-danger uk-margin-remove" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <p><%= alert %></p>
+      </div>
     <% end %>
     <header>
       <nav class="uk-navbar-container" uk-navbar>
