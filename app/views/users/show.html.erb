@@ -1,5 +1,11 @@
 <table class="uk-table uk-table-striped">
   <tbody>
+    <% if @user.avatar.attached? %>
+      <tr>
+        <td><%= User.human_attribute_name(:avatar) %></td>
+        <td><%= image_tag @user.avatar.variant(resize_to_limit: [100,100]) %></td>
+      </tr>
+    <% end %>
     <tr>
       <td><%= User.human_attribute_name(:name) %></td>
       <td><%= @user.name %></td>

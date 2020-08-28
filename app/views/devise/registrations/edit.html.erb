@@ -3,6 +3,12 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <div class="field uk-margin" uk-form-custom="target: true">
+    <%= f.label :avatar, class: 'uk-form-label' %>
+    <%= f.file_field :avatar %>
+    <input class="uk-input uk-form-width-medium" type="text" placeholder=<%= t('form.file') %> disabled>
+  </div>
+
   <div class="field uk-margin">
     <%= f.label :name, class: 'uk-form-label' %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'uk-input' %>
@@ -32,28 +38,33 @@
     <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
   <% end %>
 
-  <div class="field uk-margin">
-    <%= f.label :password, class: 'uk-form-label' %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: 'uk-input' %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
-    <% end %>
-  </div>
+  <% if f.object.provider.blank? %>
 
-  <div class="field uk-margin">
-    <%= f.label :password_confirmation, class: 'uk-form-label' %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'uk-input' %>
-  </div>
+    <div class="field uk-margin">
+      <%= f.label :password, class: 'uk-form-label' %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: 'uk-input' %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+      <% end %>
+    </div>
 
-  <div class="field uk-margin">
-    <%= f.label :current_password, class: 'uk-form-label' %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password", class: 'uk-input' %>
-  </div>
+    <div class="field uk-margin">
+      <%= f.label :password_confirmation, class: 'uk-form-label' %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'uk-input' %>
+    </div>
+
+    <div class="field uk-margin">
+      <%= f.label :current_password, class: 'uk-form-label' %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", class: 'uk-input' %>
+    </div>
+
+  <% end %>
 
   <div class="actions">
     <%= f.submit t('.update'), class: 'uk-button uk-button-primary' %>
   </div>
+
 <% end %>
 
 <p><%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class: 'uk-button uk-button-danger' %></p>

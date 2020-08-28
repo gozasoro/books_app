@@ -295,6 +295,7 @@ DEPENDENCIES
   devise
   devise-i18n
   foreman
+  image_processing (~> 1.2)
   kaminari
   listen (~> 3.2)
   omniauth

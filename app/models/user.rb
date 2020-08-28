@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_one_attached :avatar
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,7 +12,7 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.name = auth.info.nickname
-      user.email = User.dummy_email(auth)
+      user.email = auth.email || User.dummy_email(auth)
       user.password = Devise.friendly_token[0, 20]
     end
   end
@@ -21,5 +23,13 @@ class User < ApplicationRecord
 
   def self.create_unique_string
     SecureRandom.uuid
+  end
+
+  def update_with_password(params, *options)
+    if provider.present?
+      update_attributes(params, *options)
+    else
+      super
+    end
   end
 end
