@@ -8,6 +8,7 @@ ja:
         introduction: 自己紹介
         postal_code: 郵便番号
         address: 住所
+        avatar: プロフィール画像
   devise:
     shared:
       links:
