@@ -1,7 +1,19 @@
-ja:
+en:
   users:
     index:
       title: Users
     show:
       edit: Edit
       back: Back
+      follows: Follows
+      followers: Followers
+      following: Following
+      follow: Follow
+    followers:
+      followers: "'s Followers"
+      status: Status
+      following: Following
+    follows:
+      follows: "'s Follows"
+      status: Status
+      following: Following

@@ -1,0 +1,27 @@
+<h1 class="uk-heading-bullet uk-margin-remove"><%= @user.name + t('.follows') %></h1>
+
+<table class="uk-table uk-table-striped">
+  <thead>
+    <tr>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= t('.status') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, user %></td>
+        <td>
+          <% if user.followed_by?(current_user) %>
+            <p class="uk-text-muted"><%= t('.following') %></p>
+          <% else %>
+            <p class="uk-text-muted">-</p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users %>

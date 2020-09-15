@@ -5,3 +5,15 @@ ja:
     show:
       edit: 編集
       back: 戻る
+      follows: フォロー
+      followers: フォロワー
+      following: フォロー中
+      follow: フォローする
+    followers:
+      followers: のフォロワー
+      status: ステータス
+      following: フォロー中
+    follows:
+      follows: のフォロー
+      status: ステータス
+      following: フォロー中
