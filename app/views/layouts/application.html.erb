@@ -32,6 +32,13 @@
             </ul>
           <% end %>
         </div>
+        <div class="uk-navbar-center">
+          <ul class="uk-navbar-nav">
+            <li><%= link_to t('books.index.title'), books_path %></li>
+            <li><%= link_to t('users.index.title'), users_path %></li>
+            <li><%= link_to t('reports.index.title'), reports_path %></li>
+          </ul>
+        </div>
         <div class="uk-navbar-right">
           <% if user_signed_in? %>
             <ul class="uk-navbar-nav">

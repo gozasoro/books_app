@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 2020_09_17_114127) do
     t.string "picture"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "body", null: false
+    t.integer "user_id"
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "following_id", null: false
     t.integer "follower_id", null: false
@@ -52,6 +63,16 @@ ActiveRecord::Schema.define(version: 2020_09_17_114127) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
     t.index ["following_id", "follower_id"], name: "index_relationships_on_following_id_and_follower_id", unique: true
     t.index ["following_id"], name: "index_relationships_on_following_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.string "title", default: "無題", null: false
+    t.text "body", null: false
+    t.date "written_at"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,4 +95,6 @@ ActiveRecord::Schema.define(version: 2020_09_17_114127) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "users"
+  add_foreign_key "reports", "users"
 end

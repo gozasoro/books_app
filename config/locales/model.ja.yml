@@ -2,6 +2,8 @@ ja:
   activerecord:
     models:
       book: 本
+      report: 日報
+      comment: コメント
     attributes:
       book:
         id: ID
@@ -11,3 +13,13 @@ ja:
         picture: 写真
         created_at: 作成日
         updated_at: 更新日
+      report:
+        id: ID
+        title: タイトル
+        body: 内容
+        date: 日付
+        user: ユーザー
+        created_at: 作成日
+        updated_at: 更新日
+      comment:
+        body: コメント

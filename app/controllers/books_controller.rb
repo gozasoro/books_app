@@ -9,7 +9,6 @@ class BooksController < ApplicationController
     @books = Book.page(params[:page])
   end
 
-  # GET /books/1
   def show; end
 
   # GET /books/new

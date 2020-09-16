@@ -1,0 +1,10 @@
+<% commentable.comments.each do |comment| %>
+  <p class="uk-text">
+    <%= comment.body %><span class="uk-text-muted"> - <%= comment.user.name %></span>
+    <% if comment.user == current_user %>
+      <%= link_to t('shared.delete'), polymorphic_path([commentable, comment]), method: :delete, class: 'uk-link-muted' %>
+      <%= link_to t('shared.edit'), edit_polymorphic_path([commentable, comment]), class: 'uk-link-muted' %>
+    <% end %>
+  </p>
+  <hr>
+<% end %>

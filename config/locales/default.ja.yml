@@ -10,5 +10,17 @@ ja:
       unfollow:
         success: フォローを解除しました。
         failed: フォローの解除に失敗しました。
+    reports:
+      created: 日報を作成しました。
+      updated: 日報を更新しました。
+      destroyed: 日報を削除しました。
+      not_authorized: 権限がありません。
+    comments:
+      created: コメントを作成しました。
+      updated: コメントを更新しました。
+      destroyed: コメントを削除しました。
+  shared:
+    delete: 削除
+    edit: 編集
   form:
     file: 選択してください

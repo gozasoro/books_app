@@ -1,0 +1,32 @@
+<%= form_with(model: report, local: true) do |form| %>
+  <% if report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(report.errors.count, 'error') + ' ' + t('.error') %>:</h2>
+
+      <ul>
+        <% report.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field uk-margin">
+    <%= form.label :date, class: 'uk-form-label' %>
+    <%= form.date_select :date, class: 'uk-input' %>
+  </div>
+
+  <div class="field uk-margin">
+    <%= form.label :title, class: 'uk-form-label' %>
+    <%= form.text_field :title, class: 'uk-input' %>
+  </div>
+
+  <div class="field uk-margin">
+    <%= form.label :body, class: 'uk-form-label' %>
+    <%= form.text_area :body, class: 'uk-input' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'uk-button uk-button-primary' %>
+  </div>
+<% end %>
