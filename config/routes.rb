@@ -10,7 +10,12 @@ Rails.application.routes.draw do
     get :follows, on: :member
     get :followers, on: :member
   end
-  resources :books
+  resources :books do
+    resources :comments, only: %i[create edit update destroy]
+  end
+  resources :reports do
+    resources :comments, only: %i[create edit update destroy]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "books#index"
 end

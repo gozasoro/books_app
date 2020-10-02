@@ -10,5 +10,17 @@ en:
       unfollow:
         success: Unfollowed.
         failed: Failed to unfollow.
+    reports:
+      created: Report was successfully created.
+      updated: Report was successfully updated.
+      destroyed: Report was successfully destroyed.
+      not_authorized: Not authorized.
+    comments:
+      created: Comment was successfully created.
+      updated: Comment was successfully updated.
+      destroyed: Comment was successfully destroyed.
+  shared:
+    delete: Delete
+    edit: Edit
   form:
     file: Select file

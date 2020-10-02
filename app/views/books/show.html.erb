@@ -19,5 +19,8 @@
   </tbody>
 </table>
 
+<%= render 'shared/comments', commentable: @book %>
+<%= render 'shared/comment_form', commentable: @book %>
+
 <%= link_to t('.edit'), edit_book_path(@book), class: 'uk-button uk-button-default uk-margin-right' %>
 <%= link_to t('.back'), books_path, class: 'uk-button uk-button-default' %>

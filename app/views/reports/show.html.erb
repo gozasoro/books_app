@@ -1,0 +1,28 @@
+<table class="uk-table uk-table-striped">
+  <tbody>
+    <tr>
+      <td><%= Report.human_attribute_name(:date) %></td>
+      <td><%= @report.date %></td>
+    </tr>
+    <tr>
+      <td><%= Report.human_attribute_name(:title) %></td>
+      <td><%= @report.title %></td>
+    </tr>
+    <tr>
+      <td><%= Report.human_attribute_name(:body) %></td>
+      <td><%= @report.body %></td>
+    </tr>
+    <tr>
+      <td><%= Report.human_attribute_name(:user) %></td>
+      <td><%= @report.user.name %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= render 'shared/comments', commentable: @report %>
+<%= render 'shared/comment_form', commentable: @report %>
+
+<% if current_user == @report.user %>
+  <%= link_to t('.edit'), edit_report_path(@report), class: 'uk-button uk-button-default uk-margin-right' %>
+<% end %>
+<%= link_to t('.back'), reports_path, class: 'uk-button uk-button-default' %>
