@@ -3,5 +3,12 @@ en:
     created: Book was successfully created.
     updated: Book was successfully updated.
     destroyed: Book was successfully destroyed.
+    relationships:
+      follow:
+        success: Followed.
+        failed: Failed to follow.
+      unfollow:
+        success: Unfollowed.
+        failed: Failed to unfollow.
   form:
     file: Select file

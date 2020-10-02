@@ -30,7 +30,15 @@
     <% end %>
   </tbody>
 </table>
+<%= link_to t('.follows'), follows_user_path, class: 'uk-link-muted' %>
+<%= link_to t('.followers'), followers_user_path, class: 'uk-link-muted' %>
 <% if current_user == @user %>
   <%= link_to t('.edit'), edit_user_registration_path, class: 'uk-button uk-button-default uk-margin-right' %>
+<% else %>
+  <% if @user.followed_by?(current_user) %>
+    <%= link_to t('.following'), user_relationships_path(@user.id), method: :delete, class: 'uk-button uk-button-default' %>
+  <% else %>
+    <%= link_to t('.follow'), user_relationships_path(@user.id), method: :post, class: 'uk-button uk-button-primary' %>
+  <% end %>
 <% end %>
 <%= link_to t('.back'), users_path, class: 'uk-button uk-button-default' %>
