@@ -1,0 +1,21 @@
+en:
+  reports:
+    index:
+      title: Title
+      show: Show
+      edit: Edit
+      destroy: Destroy
+      confirm: Are you sure?
+      new: New Report
+    show:
+      edit: Edit
+      back: Back
+    new:
+      title: New Report
+      back: Back
+    edit:
+      title: Editing Report
+      show: Show
+      back: Back
+    form:
+      error: prohibited this report from being saved

@@ -1,0 +1,10 @@
+<% comment = Comment.new unless comment %>
+<%= form_with(model: [commentable, comment], local: true) do |form| %>
+  <div class="field uk-margin">
+    <%= form.label :body, class: 'uk-form-label' %>
+    <%= form.text_field :body, class: 'uk-input' %>
+  </div>
+  <div class="actions">
+    <%= form.submit class: 'uk-button uk-button-primary' %>
+  </div>
+<% end %>

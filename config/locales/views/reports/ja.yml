@@ -1,0 +1,21 @@
+ja:
+  reports:
+    index:
+      title: 日報一覧
+      show: 表示
+      edit: 編集
+      destroy: 削除
+      confirm: 本当に削除してもよろしいですか？
+      new: 新しい日報を作成
+    show:
+      edit: 編集
+      back: 戻る
+    new:
+      title: 新しい日報を作成
+      back: 戻る
+    edit:
+      title: 日報の編集
+      show: 表示
+      back: 戻る
+    form:
+      error: この日報は保存できません
