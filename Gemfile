@@ -44,6 +44,7 @@ group :development do
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "rubocop"
   gem "rubocop-rails"
+  gem "rubocop-performance"
   gem "foreman"
 end
 
