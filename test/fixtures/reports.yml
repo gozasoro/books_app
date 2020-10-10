@@ -1,0 +1,5 @@
+one:
+  user: alice
+  title: "Report Title"
+  body: "Report Body"
+  written_at: <%= Date.new(2020,10,8).to_s(:db) %>

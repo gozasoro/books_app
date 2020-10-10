@@ -3,7 +3,7 @@
 <table class="uk-table uk-table-striped">
   <thead>
     <tr>
-      <th><%= Report.human_attribute_name(:date) %></th>
+      <th><%= Report.human_attribute_name(:written_at) %></th>
       <th><%= Report.human_attribute_name(:title) %></th>
       <th><%= Report.human_attribute_name(:user) %></th>
       <th colspan="3"></th>
@@ -13,7 +13,7 @@
   <tbody>
     <% @reports.each do |report| %>
       <tr>
-        <td><%= report.date %></td>
+        <td><%= report.written_at %></td>
         <td><%= report.title %></td>
         <td><%= report.user.name %></td>
         <td><%= link_to t('.show'), report %></td>

@@ -1,0 +1,8 @@
+one:
+  commentable: one(Book)
+  user: alice
+  body: "book comment by Alice"
+two:
+  commentable: one(Report)
+  user: alice
+  body: "report comment by Alice"

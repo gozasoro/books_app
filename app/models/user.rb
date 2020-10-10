@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :follower
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :followers, through: :passive_relationships, source: :following
-  has_many :reports
-  has_many :comments
+  has_many :reports, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def followed_by?(user)
     self.passive_relationships.exists?(following_id: user.id)
@@ -22,7 +22,7 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.name = auth.info.nickname
-      user.email = auth.email || User.dummy_email(auth)
+      user.email = auth.info.email || User.dummy_email(auth)
       user.password = Devise.friendly_token[0, 20]
     end
   end
