@@ -1,5 +1,5 @@
-one:
+one_day_report:
   user: alice
-  title: "Report Title"
-  body: "Report Body"
-  written_at: <%= Date.new(2020,10,8).to_s(:db) %>
+  title: "ソフトクリーム"
+  body: "おいしかった！"
+  published_on: <%= Date.new(2020, 10, 15).to_s(:db) %>

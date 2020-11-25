@@ -17,7 +17,7 @@ ja:
         id: ID
         title: タイトル
         body: 内容
-        written_at: 日付
+        published_on: 日付
         user: ユーザー
         created_at: 作成日
         updated_at: 更新日

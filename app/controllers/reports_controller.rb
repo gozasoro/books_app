@@ -55,7 +55,7 @@ class ReportsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def report_params
-      params.require(:report).permit(:title, :body, :written_at)
+      params.require(:report).permit(:title, :body, :published_on)
     end
 
     def ensure_correct_user

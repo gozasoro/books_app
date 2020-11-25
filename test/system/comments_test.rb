@@ -4,93 +4,94 @@ require "application_system_test_case"
 
 class CommentsTest < ApplicationSystemTestCase
   def setup
-    visit new_user_session_url
-    fill_in "Eメール", with: "alice@example.com"
-    fill_in "パスワード", with: "password"
-    click_button "ログイン"
+    login_as_alice
   end
 
   test "creating a Comment on book" do
-    visit books_url
-    click_on "表示", match: :first
+    visit book_path(books(:wagashi))
 
-    fill_in "コメント", with: "New Comment"
+    fill_in "コメント", with: "とてもよかったです。"
     click_on "登録する"
 
     assert_text "コメントを作成しました。"
-    assert_text "New Comment"
-    assert page.all("p.uk-text")[1].find("span").has_text?("Alice")
+    assert_text "とてもよかったです。"
+    assert page.all(".comment")[1].find(".comment-created-by").has_text?("Alice")
   end
 
   test "showing a Comment on book" do
-    visit books_url
-    click_on "表示", match: :first
+    visit book_path(books(:wagashi))
 
-    assert_text "book comment by Alice"
+    assert_text "わらびもち食べたい！"
   end
 
   test "updating a Comment on book" do
-    visit books_url
-    click_on "表示", match: :first
+    visit book_path(books(:wagashi))
 
-    click_on "編集", match: :first
+    within ".comments" do
+      click_on "編集", match: :first
+    end
 
-    fill_in "コメント", with: "comment updated"
+    fill_in "コメント", with: "わらびもち食べたい〜！"
     click_on "更新する"
 
     assert_text "コメントを更新しました。"
-    assert_text "comment updated"
+    assert_text "わらびもち食べたい〜！"
   end
 
   test "destroying a Comment on book" do
-    visit books_url
-    click_on "表示", match: :first
+    visit book_path(books(:wagashi))
 
-    click_on "削除", match: :first
+    assert_text "わらびもち食べたい！"
+
+    within ".comments" do
+      click_on "削除", match: :first
+    end
 
     assert_text "コメントを削除しました。"
-    assert_no_text "book comment by Alice"
+    assert_no_text "わらびもち食べたい！"
   end
 
   test "creating a Comment on report" do
-    visit reports_url
-    click_on "表示", match: :first
+    visit report_path(reports(:one_day_report))
 
-    fill_in "コメント", with: "New Comment"
+    fill_in "コメント", with: "あんみつも食べたい！"
     click_on "登録する"
 
     assert_text "コメントを作成しました。"
-    assert_text "New Comment"
-    assert page.all("p.uk-text")[1].find("span").has_text?("Alice")
+    assert_text "あんみつも食べたい！"
+    assert page.all(".comment")[1].find(".comment-created-by").has_text?("Alice")
   end
 
   test "showing a Comment on report" do
-    visit reports_url
-    click_on "表示", match: :first
+    visit report_path(reports(:one_day_report))
 
-    assert_text "report comment by Alice"
+    assert_text "トッピングはスプリングル"
   end
 
   test "updating a Comment on report" do
-    visit reports_url
-    click_on "表示", match: :first
+    visit report_path(reports(:one_day_report))
 
-    click_on "編集", match: :first
+    within ".comments" do
+      click_on "編集", match: :first
+    end
 
-    fill_in "コメント", with: "comment updated"
+    fill_in "コメント", with: "ワッフルコーンにトッピングはスプリングル"
     click_on "更新する"
 
     assert_text "コメントを更新しました。"
-    assert_text "comment updated"
+    assert_text "ワッフルコーンにトッピングはスプリングル"
   end
 
   test "destroying a Comment on report" do
-    visit reports_url
-    click_on "表示", match: :first
+    visit report_path(reports(:one_day_report))
 
-    click_on "削除", match: :first
+    assert_text "トッピングはスプリングル"
+
+    within ".comments" do
+      click_on "削除", match: :first
+    end
 
     assert_text "コメントを削除しました。"
-    assert_no_text "report comment by Alice"
+    assert_no_text "トッピングはスプリングル"
   end
 end

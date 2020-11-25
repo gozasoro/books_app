@@ -30,7 +30,7 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test "showing a User" do
-    login_with_alice
+    login_as_alice
 
     visit users_url
 
@@ -41,7 +41,7 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test "updating a User" do
-    login_with_alice
+    login_as_alice
 
     click_on "マイページ"
 
@@ -68,7 +68,7 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test "destroying a User" do
-    login_with_alice
+    login_as_alice
 
     click_on "マイページ"
 
@@ -101,18 +101,10 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test "ログアウト" do
-    login_with_alice
+    login_as_alice
     click_on "ログアウト"
 
     assert_text "ログアウトしました。"
     assert_selector "h1", text: "本一覧"
   end
-
-  private
-    def login_with_alice
-      visit new_user_session_url
-      fill_in "Eメール", with: "alice@example.com"
-      fill_in "パスワード", with: "password"
-      click_button "ログイン"
-    end
 end

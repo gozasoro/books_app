@@ -1,8 +1,8 @@
-one:
-  commentable: one(Book)
+book_comment:
+  commentable: wagashi(Book)
   user: alice
-  body: "book comment by Alice"
-two:
-  commentable: one(Report)
+  body: "わらびもち食べたい！"
+report_comment:
+  commentable: one_day_report(Report)
   user: alice
-  body: "report comment by Alice"
+  body: "トッピングはスプリングル"

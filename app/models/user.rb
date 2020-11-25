@@ -31,13 +31,9 @@ class User < ApplicationRecord
     "#{auth.uid}-#{auth.provider}@example.com"
   end
 
-  def self.create_unique_string
-    SecureRandom.uuid
-  end
-
   def update_with_password(params, *options)
     if provider.present?
-      update_attributes(params, *options)
+      update(params, *options)
     else
       super
     end

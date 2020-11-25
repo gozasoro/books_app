@@ -4,84 +4,70 @@ require "application_system_test_case"
 
 class ReportsTest < ApplicationSystemTestCase
   def setup
-    visit new_user_session_url
-    fill_in "Eメール", with: "alice@example.com"
-    fill_in "パスワード", with: "password"
-    click_button "ログイン"
+    login_as_alice
   end
 
   test "visiting the index" do
     visit reports_url
     assert_selector "h1", text: "日報一覧"
 
-    columns = page.find("tbody").all("tr")[0].all("td")
-    assert columns[0].has_text?("2020-10-08")
-    assert columns[1].has_text?("Report Title")
-    assert columns[2].has_text?("Alice")
+    assert page.find(".reports-table .report-published_on").has_text?("2020-10-15")
+    assert page.find(".reports-table .report-title").has_text?("ソフトクリーム")
+    assert page.find(".reports-table .report-created_by").has_text?("Alice")
   end
 
   test "creating a Report" do
     visit reports_url
     click_on "新しい日報を作成"
 
-    select "2020", from: "report_written_at_1i"
-    select "10", from: "report_written_at_2i"
-    select "10", from: "report_written_at_3i"
-    fill_in "タイトル", with: "New Title"
-    fill_in "内容", with: "New Body"
+    select_date("published_on", "2020-10-25")
+    fill_in "タイトル", with: "今日もソフトクリーム"
+    fill_in "内容", with: "めちゃうま！"
     click_on "登録する"
 
     assert_text "日報を作成しました。"
 
-    rows = page.find("tbody").all("tr")
-    assert rows[0].all("td")[1].has_text?("2020-10-10")
-    assert rows[1].all("td")[1].has_text?("New Title")
-    assert rows[2].all("td")[1].has_text?("New Body")
-    assert rows[3].all("td")[1].has_text?("Alice")
+    assert page.find(".report-table .report-published_on").has_text?("2020-10-25")
+    assert page.find(".report-table .report-title").has_text?("今日もソフトクリーム")
+    assert page.find(".report-table .report-body").has_text?("めちゃうま！")
+    assert page.find(".report-table .report-created_by").has_text?("Alice")
   end
 
   test "showing a Report" do
-    visit reports_url
-    click_on "表示", match: :first
+    visit report_path(reports(:one_day_report))
 
-    rows = page.find("tbody").all("tr")
-    assert rows[0].all("td")[1].has_text?("2020-10-08")
-    assert rows[1].all("td")[1].has_text?("Report Title")
-    assert rows[2].all("td")[1].has_text?("Report Body")
-    assert rows[3].all("td")[1].has_text?("Alice")
+    assert page.find(".report-table .report-published_on").has_text?("2020-10-15")
+    assert page.find(".report-table .report-title").has_text?("ソフトクリーム")
+    assert page.find(".report-table .report-body").has_text?("おいしかった！")
+    assert page.find(".report-table .report-created_by").has_text?("Alice")
   end
 
   test "updating a Report" do
-    visit reports_url
-    click_on "編集", match: :first
+    visit edit_report_path(reports(:one_day_report))
 
-    select "2020", from: "report_written_at_1i"
-    select "10", from: "report_written_at_2i"
-    select "10", from: "report_written_at_3i"
-    fill_in "タイトル", with: "New Title"
-    fill_in "内容", with: "New Body"
+    select_date("published_on", "2020-10-25")
+    fill_in "タイトル", with: "カフェでソフトクリーム"
+    fill_in "内容", with: "とてもおいしかった！"
     click_on "更新する"
 
     assert_text "日報を更新しました。"
 
-    rows = page.find("tbody").all("tr")
-    assert rows[0].all("td")[1].has_text?("2020-10-10")
-    assert rows[1].all("td")[1].has_text?("New Title")
-    assert rows[2].all("td")[1].has_text?("New Body")
-    assert rows[3].all("td")[1].has_text?("Alice")
+    assert page.find(".report-table .report-published_on").has_text?("2020-10-25")
+    assert page.find(".report-table .report-title").has_text?("カフェでソフトクリーム")
+    assert page.find(".report-table .report-body").has_text?("とてもおいしかった！")
+    assert page.find(".report-table .report-created_by").has_text?("Alice")
   end
 
   test "destroying a Report" do
     visit reports_url
+
+    assert_text "ソフトクリーム"
+
     page.accept_confirm do
       click_on "削除", match: :first
     end
 
     assert_text "日報を削除しました。"
-    within(:css, "table") do
-      assert_no_text "2020-10-08"
-      assert_no_text "Report Title"
-      assert_no_text "Alice"
-    end
+    assert_no_text "ソフトクリーム"
   end
 end

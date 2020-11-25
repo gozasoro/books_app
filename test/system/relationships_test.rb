@@ -4,10 +4,7 @@ require "application_system_test_case"
 
 class RelationshipsTest < ApplicationSystemTestCase
   def setup
-    visit new_user_session_url
-    fill_in "Eメール", with: "alice@example.com"
-    fill_in "パスワード", with: "password"
-    click_button "ログイン"
+    login_as_alice
   end
 
   test "ユーザーをフォローする" do
@@ -16,7 +13,7 @@ class RelationshipsTest < ApplicationSystemTestCase
 
     click_on "フォローする"
     assert_text "ユーザーをフォローしました。"
-    assert_text "フォロー中"
+    assert_link "フォロー中"
   end
 
   test "フォロー一覧を表示する" do
@@ -49,13 +46,13 @@ class RelationshipsTest < ApplicationSystemTestCase
 
     click_on "フォロー中"
     assert_text "フォローを解除しました。"
-    assert_text "フォローする"
+    assert_link "フォローする"
   end
 
   private
     def alice_follows_bob
-      @alice = users(:alice)
-      @bob = users(:bob)
-      @alice.active_relationships.create!(follower_id: @bob.id)
+      alice = users(:alice)
+      bob = users(:bob)
+      alice.active_relationships.create!(follower_id: bob.id)
     end
 end
