@@ -1,0 +1,8 @@
+book_comment:
+  commentable: wagashi(Book)
+  user: alice
+  body: "わらびもち食べたい！"
+report_comment:
+  commentable: one_day_report(Report)
+  user: alice
+  body: "トッピングはスプリングル"

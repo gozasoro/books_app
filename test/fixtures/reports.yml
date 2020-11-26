@@ -1,0 +1,5 @@
+one_day_report:
+  user: alice
+  title: "ソフトクリーム"
+  body: "おいしかった！"
+  published_on: <%= Date.new(2020, 10, 15).to_s(:db) %>

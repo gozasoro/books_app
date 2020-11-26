@@ -1,20 +1,20 @@
-<table class="uk-table uk-table-striped">
+<table class="uk-table uk-table-striped report-table">
   <tbody>
     <tr>
-      <td><%= Report.human_attribute_name(:date) %></td>
-      <td><%= @report.date %></td>
+      <td><%= Report.human_attribute_name(:published_on) %></td>
+      <td class="report-published_on"><%= @report.published_on %></td>
     </tr>
     <tr>
       <td><%= Report.human_attribute_name(:title) %></td>
-      <td><%= @report.title %></td>
+      <td class="report-title"><%= @report.title %></td>
     </tr>
     <tr>
       <td><%= Report.human_attribute_name(:body) %></td>
-      <td><%= @report.body %></td>
+      <td class="report-body"><%= @report.body %></td>
     </tr>
     <tr>
       <td><%= Report.human_attribute_name(:user) %></td>
-      <td><%= @report.user.name %></td>
+      <td class="report-created_by"><%= @report.user.name %></td>
     </tr>
   </tbody>
 </table>
